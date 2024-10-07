@@ -10,3 +10,9 @@ test('下端点: 3 と上端点: 8 を受け取って、プロパティstartに3
     expect(actualRange.start).toBe(inputStart)
     expect(actualRange.end).toBe(inputEnd)
 })
+
+test("上端点より下端点が大きい閉区間を作ることができないこと", () => {
+    test("上端点より下端点の方が大きい値を受け取った時エラーを投げること", () => {
+       expect(() => new Range(7, 3)).toThrowError("上端点より下端点の方が大きい閉区間は作れません")
+    })
+})

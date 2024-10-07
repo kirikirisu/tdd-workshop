@@ -48,14 +48,20 @@ describe("整数の閉区間は指定した整数を含むかどうかを判定�
 });
 
 describe("整数の閉区間は別の閉区間と等価かどうかを判定できること", () => {
-    const inputStart = 3, inputEnd = 8;
-    const inputAnotherStart = 3, inputAnotherEnd = 8;
+    it.each([
+        [3, 8, true],
+        // 下端点の境界値
+        [2, 8, false],
+        [4, 8, false],
+        // 上端点の境界値
+        [3, 7, false],
+        [3, 9, false],
+    ])("下端点: 3, 上端点: 8 の閉区間インスタンスのisEqualToメソッドに、下端点: %i, 上端点: %i の閉区間インスタンスを渡すと %o を返すこと", (anotherStart, anotherEnd, expected) => {
+        const inputStart = 3, inputEnd = 8;
+        const range = new Range(inputStart, inputEnd);
+        const anotherRange = new Range(anotherStart, anotherEnd);
 
-    const range = new Range(inputStart, inputEnd);
-    const anotherRange = new Range(inputAnotherStart, inputAnotherEnd);
-
-    test("下端点: 3, 上端点: 8 の閉区間インスタンスのisEqualToメソッドに、下端点: 3, 上端点: 8 の閉区間インスタンスを渡すとtrueを返すこと", () => {
-        expect(range.isEqualTo(anotherRange)).toBe(true);
-    })
-})
+        expect(range.isEqualTo(anotherRange)).toBe(expected);
+    });
+});
 

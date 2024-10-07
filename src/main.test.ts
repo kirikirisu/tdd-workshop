@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test, it } from 'vitest'
 import {Range} from './main'
 
 describe('Rangeクラスを作成できること', () => {
@@ -32,10 +32,18 @@ describe("整数の閉区間は文字列表記を返せること", () => {
 });
 
 describe("整数の閉区間は指定した整数を含むかどうかを判定できること", () => {
-    test("下端点: 3 と上端点: 8 を受け取って、isWithinRangeメソッドに4を渡すとtrueを返すこと", () => {
+    it.each([
+        [2, false],
+        [3, true], // 下端点の境界値
+        [4, true],
+        [7, true],
+        [8, true], // 上端点の境界値
+        [9, false],
+    ])("下端点: 3 と 上端点: 8 の時、isWithinRangeメソッドに %i を渡すと %o を返すこと", (value, expected) => {
         const inputStart = 3, inputEnd = 8;
         const actualRange = new Range(inputStart, inputEnd);
 
-        expect(actualRange.isWithinRange(4)).toBe(true)
-    })
-})
+        expect(actualRange.isWithinRange(value)).toBe(expected);
+    });
+});
+

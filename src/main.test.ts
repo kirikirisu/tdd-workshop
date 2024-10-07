@@ -11,7 +11,6 @@ describe('Rangeクラスを作成できること', () => {
         expect(actualRange.start).toBe(inputStart)
         expect(actualRange.end).toBe(inputEnd)
     })
-
 })
 
 describe("上端点より下端点が大きい閉区間を作ることができないこと", () => {
@@ -65,3 +64,12 @@ describe("整数の閉区間は別の閉区間と等価かどうかを判定で�
     });
 });
 
+describe("整数の閉区間は別の閉区間を完全に含むかどうかを判定できること", () => {
+    test("下端点: 3, 上端点: 8 の閉区間インスタンスのisContainsメソッドに、下端点: 4, 上端点: 7 の閉区間インスタンスを渡すと true を返すこと", () => {
+        const inputStart = 3, inputEnd = 8;
+        const range = new Range(inputStart, inputEnd);
+        const anotherRange = new Range(4, 7);
+
+        expect(range.isContains(anotherRange)).toBe(true);
+    })
+})

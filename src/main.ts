@@ -4,6 +4,7 @@ export class Range {
   
   constructor(start: number, end: number) {
     if (start > end) throw new Error('上端点より下端点の方が大きい閉区間は作れません');
+    if (!Number.isInteger(start) || !Number.isInteger(end)) throw new Error('下端点と上端点には小数点を含む整数を登録できません');
 
     this.start = start;
     this.end = end;

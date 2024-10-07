@@ -19,6 +19,12 @@ describe('Rangeクラスを作成できること', () => {
         expect(actualRange.start).toBe(inputStart)
         expect(actualRange.end).toBe(inputEnd)
     });
+
+    test("小数点を含む整数を下端点と上端点に登録するとエラーを投げること", () => {
+        const inputStart = 3.5, inputEnd = 8;
+
+       expect(() => new Range(inputStart, inputEnd)).toThrowError("下端点と上端点には小数点を含む整数を登録できません")
+    });
 })
 
 

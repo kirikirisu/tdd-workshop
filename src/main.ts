@@ -12,4 +12,8 @@ export class Range {
   getRangeByString(): string {
     return `[${this.start}, ${this.end}]`;
   }
+
+  isWithinRange(targetNumber: number): boolean {
+    return this.start <= targetNumber && targetNumber <= this.end;
+  }
 }

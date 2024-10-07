@@ -20,3 +20,13 @@ describe("上端点より下端点が大きい閉区間を作ることができ�
     })
 })
 
+describe("整数の閉区間は文字列表記を返せること", () => {
+    test("下端点: 3 と上端点: 8 を受け取って、getRangeByStringメソッドを実行すると文字列 '[3, 8]' を返すこと", () => {
+        const inputStart = 3, inputEnd = 8;
+        const expected = '[3, 8]';
+
+        const actualRange = new Range(inputStart, inputEnd);
+
+        expect(actualRange.getRangeByString()).toBe(expected)
+    })
+});

@@ -11,9 +11,16 @@ describe('Rangeクラスを作成できること', () => {
         expect(actualRange.start).toBe(inputStart)
         expect(actualRange.end).toBe(inputEnd)
     })
+
+    test("下端点と上端点に同じ値を受け取った時、一点のみの閉区間としてRangeインスタンスが作成できること", () => {
+        const inputStart = 8, inputEnd = 8;
+        const actualRange = new Range(inputStart, inputEnd);
+
+        expect(actualRange.start).toBe(inputStart)
+        expect(actualRange.end).toBe(inputEnd)
+    });
 })
 
-describe("上端点と下端点に同じ値を受け取った時");
 
 describe("上端点より下端点が大きい閉区間を作ることができないこと", () => {
     test("上端点より下端点の方が大きい値を受け取った時エラーを投げること", () => {

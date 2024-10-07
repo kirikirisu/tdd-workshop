@@ -30,3 +30,12 @@ describe("整数の閉区間は文字列表記を返せること", () => {
         expect(actualRange.getRangeByString()).toBe(expected)
     })
 });
+
+describe("整数の閉区間は指定した整数を含むかどうかを判定できること", () => {
+    test("下端点: 3 と上端点: 8 を受け取って、isWithinRangeメソッドに4を渡すとtrueを返すこと", () => {
+        const inputStart = 3, inputEnd = 8;
+        const actualRange = new Range(inputStart, inputEnd);
+
+        expect(actualRange.isWithinRange(4)).toBe(true)
+    })
+})

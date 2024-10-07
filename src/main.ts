@@ -9,5 +9,7 @@ export class Range {
     this.end = end;
   }
 
-
+  getRangeByString(): string {
+    return `[${this.start}, ${this.end}]`;
+  }
 }

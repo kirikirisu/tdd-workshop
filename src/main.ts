@@ -16,4 +16,8 @@ export class Range {
   isWithinRange(targetNumber: number): boolean {
     return this.start <= targetNumber && targetNumber <= this.end;
   }
+
+  isEqualTo(targetRange: Range): boolean {
+    return targetRange.start === this.start && targetRange.end === this.end;
+  }
 }

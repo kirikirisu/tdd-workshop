@@ -20,4 +20,8 @@ export class Range {
   isEqualTo(targetRange: Range): boolean {
     return targetRange.start === this.start && targetRange.end === this.end;
   }
+
+  isContains(targetRange: Range): boolean {
+    return this.start <= targetRange.start && this.end >= targetRange.end;
+  }
 }

@@ -72,4 +72,20 @@ describe("整数の閉区間は別の閉区間を完全に含むかどうかを�
 
         expect(range.isContains(anotherRange)).toBe(true);
     })
+
+    it.each([
+        [3, 8, true],
+        // 下端点の境界値
+        [2, 8, false],
+        [4, 8, true],
+        // 上端点の境界値
+        [3, 7, true],
+        [3, 9, false],
+    ])("下端点: 3, 上端点: 8 の閉区間インスタンスのisContainsメソッドに、下端点: %i, 上端点: %i の閉区間インスタンスを渡すと %o を返すこと", (anotherStart, anotherEnd, expected) => {
+        const inputStart = 3, inputEnd = 8;
+        const range = new Range(inputStart, inputEnd);
+        const anotherRange = new Range(anotherStart, anotherEnd);
+
+        expect(range.isContains(anotherRange)).toBe(expected);
+    });
 })
